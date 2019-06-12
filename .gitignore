@@ -3,3 +3,9 @@
 ################################################################################
 
 /.vs/MarketEngine.Web/v16
+/MarketEngine.Web/obj
+/.vs/MarketEngine
+/MarketEngine.Domain/obj
+/MarketEngine.Web/bin/Debug/netcoreapp2.2
+/MarketEngine.Web/MarketEngine.Web.csproj.user
+/MarketEngine.Domain/bin/Debug/netcoreapp2.2
