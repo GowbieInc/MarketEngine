@@ -16,3 +16,8 @@
 /MarketEngine.Domain/bin/Debug/netstandard2.0
 /MarketEngine.Tests/bin/Debug/netcoreapp2.2
 /MarketEngine.Tests/obj
+/ClassLibrary1/obj
+/MarketEngine.Infra/bin/Debug/netstandard2.0
+/MarketEngine.Infra/obj
+/MarketEngine.Model/obj
+/MarketEngine.StateMachine/obj
