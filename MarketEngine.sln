@@ -3,13 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketEngine.Web", "MarketEngine.Web\MarketEngine.Web.csproj", "{60EE7EA9-E232-4DD8-A1A4-93E1E385A8C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarketEngine.Web", "MarketEngine.Web\MarketEngine.Web.csproj", "{60EE7EA9-E232-4DD8-A1A4-93E1E385A8C4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{C2832070-306B-4E19-BD8A-449C461F5B88}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Application", "01 - Application", "{C2832070-306B-4E19-BD8A-449C461F5B88}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{8FA18635-D43F-485C-BC96-643FB1F07722}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Domain", "02 - Domain", "{8FA18635-D43F-485C-BC96-643FB1F07722}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketEngine.Domain", "MarketEngine.Domain\MarketEngine.Domain.csproj", "{AAC02C92-F78E-4776-8E9D-FFA83481B5A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarketEngine.Domain", "MarketEngine.Domain\MarketEngine.Domain.csproj", "{AAC02C92-F78E-4776-8E9D-FFA83481B5A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Infra", "03 - Infra", "{10C0B36A-3DF1-4600-BA7D-2C1B168FDB5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Tests", "04 - Tests", "{6B767D5E-705B-4B12-A946-019288C510C2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarketEngine.Data", "MarketEngine.Data\MarketEngine.Data.csproj", "{7D261FAF-70CA-4601-9AC3-FD8705D4ACCE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarketEngine.Tests", "MarketEngine.Tests\MarketEngine.Tests.csproj", "{0EF704B2-74CE-47FD-8DA1-D56D202D758D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +33,14 @@ Global
 		{AAC02C92-F78E-4776-8E9D-FFA83481B5A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAC02C92-F78E-4776-8E9D-FFA83481B5A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAC02C92-F78E-4776-8E9D-FFA83481B5A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D261FAF-70CA-4601-9AC3-FD8705D4ACCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D261FAF-70CA-4601-9AC3-FD8705D4ACCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D261FAF-70CA-4601-9AC3-FD8705D4ACCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D261FAF-70CA-4601-9AC3-FD8705D4ACCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EF704B2-74CE-47FD-8DA1-D56D202D758D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EF704B2-74CE-47FD-8DA1-D56D202D758D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EF704B2-74CE-47FD-8DA1-D56D202D758D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EF704B2-74CE-47FD-8DA1-D56D202D758D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +48,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{60EE7EA9-E232-4DD8-A1A4-93E1E385A8C4} = {C2832070-306B-4E19-BD8A-449C461F5B88}
 		{AAC02C92-F78E-4776-8E9D-FFA83481B5A2} = {8FA18635-D43F-485C-BC96-643FB1F07722}
+		{7D261FAF-70CA-4601-9AC3-FD8705D4ACCE} = {10C0B36A-3DF1-4600-BA7D-2C1B168FDB5C}
+		{0EF704B2-74CE-47FD-8DA1-D56D202D758D} = {6B767D5E-705B-4B12-A946-019288C510C2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C1C2A23A-B4DF-4757-A3CF-782B6D71DB69}

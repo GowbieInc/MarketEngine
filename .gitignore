@@ -9,3 +9,10 @@
 /MarketEngine.Web/bin/Debug/netcoreapp2.2
 /MarketEngine.Web/MarketEngine.Web.csproj.user
 /MarketEngine.Domain/bin/Debug/netcoreapp2.2
+/MarketEngine.Tests/obj/Debug/netcoreapp2.2
+/MarketEngine.Data/obj/Debug/netstandard2.0
+/MarketEngine.Data/bin/Debug/netstandard2.0
+/MarketEngine.Data/obj
+/MarketEngine.Domain/bin/Debug/netstandard2.0
+/MarketEngine.Tests/bin/Debug/netcoreapp2.2
+/MarketEngine.Tests/obj
