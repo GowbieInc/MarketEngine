@@ -1,2 +1,2 @@
 # MarketEngine
-Gowbie engine constructed using C#
+Gowbie engine constructed using .NET Core
