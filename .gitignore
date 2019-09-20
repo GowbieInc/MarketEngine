@@ -21,3 +21,5 @@
 /MarketEngine.Infra/obj
 /MarketEngine.Model/obj
 /MarketEngine.StateMachine/obj
+/MarketEngine.Controller/bin/Debug/netstandard2.0
+/MarketEngine.Controller/obj
