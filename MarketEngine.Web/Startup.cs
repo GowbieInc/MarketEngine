@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using System.IO;
+using MarketEngine.Model.Models.Configuration;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -9,15 +13,19 @@ namespace MarketEngine.Web
 {
     public class Startup
     {
+        public static IConfiguration Configuration { get; set; }
 
+        private IServiceCollection services;
         public Startup(IHostingEnvironment env)
         {
 
         }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection _services)
         {
+            services = _services;
             services.AddSwaggerGen(swagger => 
             {
                 swagger.SwaggerDoc("V1", new Info
@@ -33,6 +41,24 @@ namespace MarketEngine.Web
 
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Latest);
+
+            ConfigureConfigFiles();
+            ConfigureAppParams();
+        }
+        private void ConfigureConfigFiles()
+        {
+
+            IConfigurationBuilder builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("MongoDBCredentials.json", optional: false, reloadOnChange: true)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+            Configuration = builder.Build();
+        }
+
+        private void ConfigureAppParams()
+        {
+            services.Configure<MongoSettings>(Configuration.GetSection("MongoDB"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
