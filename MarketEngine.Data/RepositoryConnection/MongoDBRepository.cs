@@ -3,7 +3,7 @@ using Microsoft.Extensions.Options;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
 
-namespace MarketEngine.Repository
+namespace MarketEngine.Repository.RepositoryConnection
 {
     public class MongoDBRepository
     {
