@@ -1,5 +1,5 @@
-﻿using System;
-using System.IO;
+﻿using MarketEngine.Domain.Services.Status.Interfaces;
+using MarketEngine.Domain.Services.Status.Services;
 using MarketEngine.Model.Models.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,14 +8,15 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using System.IO;
 
 namespace MarketEngine.Web
 {
     public class Startup
     {
         public static IConfiguration Configuration { get; set; }
-
         private IServiceCollection services;
+
         public Startup(IHostingEnvironment env)
         {
 
@@ -44,13 +45,15 @@ namespace MarketEngine.Web
 
             ConfigureConfigFiles();
             ConfigureAppParams();
+            ConfigureDI();
         }
+
         private void ConfigureConfigFiles()
         {
 
             IConfigurationBuilder builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("MongoDBCredentials.json", optional: false, reloadOnChange: true)
+                .AddJsonFile("MongoDBCredentials.json", optional: true, reloadOnChange: true)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
             Configuration = builder.Build();
@@ -59,6 +62,11 @@ namespace MarketEngine.Web
         private void ConfigureAppParams()
         {
             services.Configure<MongoSettings>(Configuration.GetSection("MongoDB"));
+        }
+
+        private void ConfigureDI()
+        {
+            services.AddSingleton<IStatusService, StatusService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,11 +78,6 @@ namespace MarketEngine.Web
             }
 
             app.UseMvc();
-            //app.UseMvc(routes =>
-            //{
-            //    routes.MapHttpRoute(
-            //        name: "default", routeTemplate: "{controller=Home}/{action=Index}/{id?}");
-            //});
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -82,6 +85,7 @@ namespace MarketEngine.Web
                 c.SwaggerEndpoint("Swagger/V1/swagger.json", "Documentation V1");
                 c.DocumentTitle = "Documentation";
             });
+
             var rewriteOptions = new RewriteOptions();
             rewriteOptions.AddRedirect("^$", "swagger");
             app.UseRewriter(rewriteOptions);
