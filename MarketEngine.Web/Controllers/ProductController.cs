@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using MarketEngine.Domain.Service.Interfaces;
+using MarketEngine.Model.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace MarketEngine.Web.Controllers
 {
@@ -11,9 +9,38 @@ namespace MarketEngine.Web.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        public ProductController()
+        private readonly IProductService productService;
+        public ProductController(IProductService productService)
         {
+            this.productService = productService;
+        }
 
+        [HttpPost]
+        public IActionResult Post([FromBody]Product product)
+        {
+            try
+            {
+                productService.Create(product);
+                return Ok();
+            }
+            catch (InvalidOperationException invalidOperationException)
+            {
+                return BadRequest(invalidOperationException.Message);
+            }
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(string id)
+        {
+            try
+            {
+                
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

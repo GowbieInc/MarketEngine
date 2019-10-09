@@ -41,7 +41,7 @@ namespace MarketEngine.Web
             });
 
             services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Latest);
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             ConfigureConfigFiles();
             ConfigureAppParams();
