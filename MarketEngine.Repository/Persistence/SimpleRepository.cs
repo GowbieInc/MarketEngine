@@ -1,9 +1,6 @@
 ﻿using MarketEngine.Model.Interfaces.Models;
-using MarketEngine.Model.Models.Configuration;
 using MarketEngine.Repository.Interfaces;
 using MarketEngine.Repository.RepositoryConnection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
@@ -15,13 +12,10 @@ using System.Linq.Expressions;
 
 namespace MarketEngine.Repository
 {
-    public class SimpleRepository<T> : MongoDBRepository, ISimpleRepository<T> where T : ISimpleModel
+    public abstract class SimpleRepository<T> : MongoDBRepository, ISimpleRepository<T> where T : ISimpleModel
     {
-        protected ILogger logger;
-
-        public SimpleRepository(IOptions<MongoSettings> options, ILogger<T> logger) : base(options)
+        protected SimpleRepository()
         {
-            this.logger = logger;
         }
 
         public object GetByIdAsDocument(string id)
@@ -69,14 +63,8 @@ namespace MarketEngine.Repository
             return BaseCollection.FindOne(Query<T>.EQ(u => u.Name, name));
         }
 
-        protected virtual void InitializeFields(T t)
-        {
-
-        }
-
         public virtual T Create(T t)
         {
-            InitializeFields(t);
             var retry = 0;
             do
             {
@@ -99,10 +87,11 @@ namespace MarketEngine.Repository
 
         public virtual T CreateWithId(T t)
         {
-            InitializeFields(t);
             if (string.IsNullOrEmpty(t.Id))
                 t.Id = Guid.NewGuid().ToString();
+
             BaseCollection.Insert(t);
+
             return t;
         }
         public void Delete(T t)
@@ -186,16 +175,9 @@ namespace MarketEngine.Repository
         public void ForEach(Action<T> itemAction)
         {
             MongoCursor<T> cursor = BaseCollection.FindAll().SetFlags(QueryFlags.NoCursorTimeout).SetSnapshot().SetSortOrder();
-            try
+            foreach (T item in cursor)
             {
-                foreach (T item in cursor)
-                {
-                    itemAction(item);
-                }
-            }
-            catch (Exception exception)
-            {
-                logger.LogError(exception, "SimpleRepository Error");
+                itemAction(item);
             }
         }
 

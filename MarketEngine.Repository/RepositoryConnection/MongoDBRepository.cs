@@ -1,5 +1,4 @@
 ﻿using MarketEngine.Model.Models.Configuration;
-using Microsoft.Extensions.Options;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
 
@@ -8,16 +7,18 @@ namespace MarketEngine.Repository.RepositoryConnection
     public class MongoDBRepository
     {
         protected IMongoDatabase Database;
-        public MongoDBRepository(IOptions<MongoSettings> options)
+
+        public MongoDBRepository()
         {
-            GetDatabase(options);
+            var mongoSettings = DependencyInjection.Configuration.ConfigurationProvider.GetOptions<MongoSettings>(); 
+            GetDatabase(mongoSettings);
             RegisterConventions();
         }
 
-        private void GetDatabase(IOptions<MongoSettings> options)
+        private void GetDatabase(MongoSettings options)
         {
-            var mongoClient = new MongoClient(options.Value.ConnectionString);
-            Database = mongoClient.GetDatabase(options.Value.Database);
+            var mongoClient = new MongoClient(options.ConnectionString);
+            Database = mongoClient.GetDatabase(options.Database);
         }
 
         public static void RegisterConventions()

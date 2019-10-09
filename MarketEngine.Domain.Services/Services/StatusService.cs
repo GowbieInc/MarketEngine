@@ -1,6 +1,6 @@
-﻿using MarketEngine.Domain.Services.Status.Interfaces;
+﻿using MarketEngine.Domain.Service.Interfaces;
 
-namespace MarketEngine.Domain.Services.Status.Services
+namespace MarketEngine.Domain.Service.Services
 {
     public class StatusService : IStatusService
     {

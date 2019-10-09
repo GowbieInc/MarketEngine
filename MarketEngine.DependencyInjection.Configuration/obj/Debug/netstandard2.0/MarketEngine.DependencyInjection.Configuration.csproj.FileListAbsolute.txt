@@ -1,0 +1,9 @@
+C:\Projects\MarketEngine\MarketEngine.DependencyInjection.Configuration\bin\Debug\netstandard2.0\MarketEngine.DependencyInjection.Configuration.deps.json
+C:\Projects\MarketEngine\MarketEngine.DependencyInjection.Configuration\bin\Debug\netstandard2.0\MarketEngine.DependencyInjection.Configuration.dll
+C:\Projects\MarketEngine\MarketEngine.DependencyInjection.Configuration\obj\Debug\netstandard2.0\MarketEngine.DependencyInjection.Configuration.csproj.CoreCompileInputs.cache
+C:\Projects\MarketEngine\MarketEngine.DependencyInjection.Configuration\obj\Debug\netstandard2.0\MarketEngine.DependencyInjection.Configuration.AssemblyInfoInputs.cache
+C:\Projects\MarketEngine\MarketEngine.DependencyInjection.Configuration\obj\Debug\netstandard2.0\MarketEngine.DependencyInjection.Configuration.AssemblyInfo.cs
+C:\Projects\MarketEngine\MarketEngine.DependencyInjection.Configuration\obj\Debug\netstandard2.0\MarketEngine.DependencyInjection.Configuration.csprojAssemblyReference.cache
+C:\Projects\MarketEngine\MarketEngine.DependencyInjection.Configuration\bin\Debug\netstandard2.0\MarketEngine.DependencyInjection.Configuration.pdb
+C:\Projects\MarketEngine\MarketEngine.DependencyInjection.Configuration\obj\Debug\netstandard2.0\MarketEngine.DependencyInjection.Configuration.dll
+C:\Projects\MarketEngine\MarketEngine.DependencyInjection.Configuration\obj\Debug\netstandard2.0\MarketEngine.DependencyInjection.Configuration.pdb

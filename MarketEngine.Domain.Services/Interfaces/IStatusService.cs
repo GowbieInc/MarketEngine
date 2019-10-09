@@ -1,4 +1,4 @@
-﻿namespace MarketEngine.Domain.Services.Status.Interfaces
+﻿namespace MarketEngine.Domain.Service.Interfaces
 {
     public interface IStatusService
     {

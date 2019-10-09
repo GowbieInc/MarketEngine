@@ -1,5 +1,5 @@
-﻿using MarketEngine.Domain.Services.Status.Interfaces;
-using MarketEngine.Domain.Services.Status.Services;
+﻿using MarketEngine.Domain.Service.Interfaces;
+using MarketEngine.Domain.Service.Services;
 using MarketEngine.Model.Models.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,7 +27,7 @@ namespace MarketEngine.Web
         public void ConfigureServices(IServiceCollection _services)
         {
             services = _services;
-            services.AddSwaggerGen(swagger => 
+            services.AddSwaggerGen(swagger =>
             {
                 swagger.SwaggerDoc("V1", new Info
                 {
@@ -57,11 +57,13 @@ namespace MarketEngine.Web
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
             Configuration = builder.Build();
+
         }
 
         private void ConfigureAppParams()
         {
             services.Configure<MongoSettings>(Configuration.GetSection("MongoDB"));
+            DependencyInjection.Configuration.ConfigurationProvider.BuildProvider(Configuration);
         }
 
         private void ConfigureDI()
