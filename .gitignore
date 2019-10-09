@@ -27,3 +27,6 @@
 /MarketEngine.Repository/bin/Debug/netstandard2.0
 /MarketEngine.Repository/obj/Debug/netstandard2.0
 /MarketEngine.Repository/obj
+/MarketEngine.Model/bin
+/MarketEngine.Domain.Services/bin
+/MarketEngine.DependencyInjection.Configuration/*
