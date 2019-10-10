@@ -2,6 +2,7 @@
 using FluentAssertions;
 using MarketEngine.Domain.Service.Interfaces;
 using MarketEngine.Domain.Service.Services;
+using MarketEngine.Model.DTO.Requests;
 using MarketEngine.Model.Models;
 using MarketEngine.Repository.Interfaces;
 using Moq;
@@ -40,19 +41,21 @@ namespace MarketEngine.Tests.Services
         [Test]
         public void ShouldCreateAProduct()
         {
-            var product = fixture.Create<Product>();
-            productRepositoryMock.Setup(x => x.Create(product)).Returns(product);
+            var request = fixture.Create<CreateProductRequest>();
+            productRepositoryMock.Setup(x => x.Create(It.IsAny<Product>())).Returns(fixture.Create<Product>());
 
-            var response = service.Create(product);
+            var response = service.Create(request, fixture.Create<string>());
 
             response.Should().BeOfType<Product>();
+            response.Should().NotBeNull();
+            response.Id.Should().NotBeNullOrEmpty();
         }
 
         [Test]
         public void ShouldThrowAExceptionWhenTryingToCreateANullProduct()
         {
             service
-                .Invoking(method => method.Create(null))
+                .Invoking(method => method.Create(null, fixture.Create<string>()))
                 .Should()
                 .Throw<InvalidOperationException>()
                 .WithMessage("Cannot create a null product");
@@ -61,15 +64,27 @@ namespace MarketEngine.Tests.Services
         }
 
         [Test]
-        public void ShouldGetAProduct()
+        public void ShouldThrowAExceptionWhenTryingToCreateAProductWithUnidentifiedUser()
         {
-            var product = fixture.Create<Product>();
-            productRepositoryMock.Setup(x => x.GetById(product.Id));
+            service
+                .Invoking(method => method.Create(fixture.Create<CreateProductRequest>(), string.Empty))
+                .Should()
+                .Throw<InvalidOperationException>()
+                .WithMessage("Cannot create a product (UNIDENTIFIED USER)");
 
-            var response = service.GetById(product.Id);
-
-            response.Should().BeOfType<Product>();
-            response.Should().NotBeNull();
+            productRepositoryMock.Verify(x => x.Create(null), Times.Never);
         }
+
+        //[Test]
+        //public void ShouldGetAProduct()
+        //{
+        //    var productId = Guid.NewGuid().ToString();
+        //    productRepositoryMock.Setup(x => x.GetById(productId)).Returns(fixture.Create<Product>());
+
+        //    var response = service.GetById(productId);
+
+        //    response.Should().BeOfType<Product>();
+        //    response.Should().NotBeNull();
+        //}
     }
 }

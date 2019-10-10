@@ -1,5 +1,5 @@
 ﻿using MarketEngine.Domain.Service.Interfaces;
-using MarketEngine.Model.Models;
+using MarketEngine.Model.DTO.Requests;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -16,7 +16,7 @@ namespace MarketEngine.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]Product product)
+        public IActionResult Post([FromBody]CreateProductRequest product)
         {
             try
             {
@@ -29,18 +29,18 @@ namespace MarketEngine.Web.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Get(string id)
-        {
-            try
-            {
+        //[HttpGet("{id}")]
+        //public IActionResult Get(string id)
+        //{
+        //    try
+        //    {
                 
-            }
-            catch (Exception)
-            {
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
-        }
+        //        throw;
+        //    }
+        //}
     }
 }

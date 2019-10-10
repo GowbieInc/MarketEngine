@@ -1,10 +1,11 @@
-﻿using MarketEngine.Model.Models;
+﻿using MarketEngine.Model.DTO.Requests;
+using MarketEngine.Model.Models;
 
 namespace MarketEngine.Domain.Service.Interfaces
 {
     public interface IProductService
     {
-        Product Create(Product product);
-        Product GetById(string productId);
+        Product Create(CreateProductRequest request, string userId);
+      //  Product GetById(string productId);
     }
 }
